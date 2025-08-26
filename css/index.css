@@ -264,18 +264,7 @@
             z-index: 1;
         }
 
-        .hero-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            background-size: cover;
-            background-position: center;
-        }
+    /* Swiper removed: hero uses static background via .hero-image */
 
         .hero-content {
             position: relative;

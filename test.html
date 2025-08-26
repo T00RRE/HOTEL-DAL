@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +15,6 @@
     <meta property="og:title" content="Hotel DAL Kielce - 3-gwiazdkowy hotel w centrum Kielc">
     <meta property="og:description" content="Komfortowy pobyt w centrum Kielc. 52 pokoje, sale konferencyjne do 120 osób, parking z monitoringiem. Idealny dla biznesu i turystyki.">
     <meta property="og:image" content="https://www.hoteldal.pl/img/hotel-dal-kielce-og.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.hoteldal.pl/">
-    <meta property="twitter:title" content="Hotel DAL Kielce - 3-gwiazdkowy hotel w centrum Kielc">
-    <meta property="twitter:description" content="Komfortowy pobyt w centrum Kielc. 52 pokoje, sale konferencyjne, parking z monitoringiem.">
-    <meta property="twitter:image" content="https://www.hoteldal.pl/img/hotel-dal-kielce-og.jpg">
-    
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -63,10 +57,25 @@
     </script>
     
     <link rel="canonical" href="https://www.hoteldal.pl/">
+    <style>
+    /* Critical (above-the-fold) styles: header + hero */
+    html,body{height:100%;margin:0;padding:0}
+    header{width:100%}
+    .hero{position:relative;min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero-image{position:absolute;inset:0;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;transform:translateZ(0)}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.22);z-index:1;pointer-events:none}
+    .hero-content{position:relative;z-index:2;color:#fff}
+    @media (max-width:768px){.hero{min-height:360px}}
+    </style>
     <link rel="stylesheet" href="css/webfonts/fonts.css">
     <link rel="stylesheet" href="css/webfonts/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Preload critical assets to speed up first and repeat views -->
+    <link rel="preload" as="image" href="img/hero/bg01.webp">
+    <link rel="preload" href="css/webfonts/montserrat-v30-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="css/webfonts/montserrat-v30-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="css/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="css/webfonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 <body>
     <!-- Header -->
@@ -74,7 +83,7 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <img src="img/logo/logo.webp" alt="Hotel Dal Logo">
+                    <img src="img/logo/logo.webp" alt="Hotel Dal Logo" width="180" height="38">
                 </div>
                 
                 <ul class="nav-menu">
@@ -96,14 +105,9 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-slider swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image: url('img/hero/bg01.webp');"></div>
-                <div class="swiper-slide" style="background-image: url('img/hero/bg02.webp');"></div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-        
+        <!-- Replaced Swiper slider with a single static hero image -->
+        <div class="hero-image" style="background-image: url('img/hero/bg01.webp');" aria-hidden="true"></div>
+
         <div class="container">
             <div class="hero-content">
                 <h1>Komfortowy pobyt w centrum Kielc</h1>
@@ -119,28 +123,28 @@
     <div class="feature-box">
         <i class="fas fa-map-marker-alt"></i>
         <div class="feature-text">
-            <h4>Idealna lokalizacja</h4>
+            <h2>Idealna lokalizacja</h2>
             <p>Centrum Kielc, blisko Targów Kielce</p>
         </div>
     </div>
     <div class="feature-box">
         <i class="fas fa-coffee"></i>
         <div class="feature-text">
-            <h4>Śniadania i catering</h4>
+            <h2>Śniadania i catering</h2>
             <p>Pyszne śniadania i obsługa wydarzeń</p>
         </div>
     </div>
     <div class="feature-box">
         <i class="fas fa-parking"></i>
         <div class="feature-text">
-            <h4>Parking z monitoringiem</h4>
+            <h2>Parking z monitoringiem</h2>
             <p>Garaż podziemny i parking zewnętrzny</p>
         </div>
     </div>
     <div class="feature-box">
         <i class="fas fa-business-time"></i>
         <div class="feature-text">
-            <h4>Sale konferencyjne</h4>
+            <h2>Sale konferencyjne</h2>
             <p>Przestrzeń dla grup do 120 osób</p>
         </div>
     </div>
@@ -516,7 +520,7 @@
                     </div>
                     
                     <div class="map-container">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.721147149352!2d20.626756376886426!3d50.87336197167607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471827ecbc7f1413%3A0x2f1da25d823bb9ac!2sHotel%20Dal!5e0!3m2!1spl!2spl!4v1755590045068!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+<iframe title="Lokalizacja Hotelu Dal-Kielce" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.721147149352!2d20.626756376886426!3d50.87336197167607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471827ecbc7f1413%3A0x2f1da25d823bb9ac!2sHotel%20Dal!5e0!3m2!1spl!2spl!4v1755590045068!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
                 </div>
                 
                 <div class="contact-form">
@@ -619,7 +623,7 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Swiper removed: no slider used for hero -->
     <script>
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
@@ -645,19 +649,7 @@
             header.classList.toggle('header-scrolled', window.scrollY > 100);
         });
 
-        // Hero Slider
-        const heroSwiper = new Swiper('.hero-slider', {
-            loop: true,
-            effect: 'fade',
-            speed: 1000,
-            autoplay: {
-                delay: 5000,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
+    // Hero now uses a static image; Swiper slider removed.
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
