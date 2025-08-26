@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +15,6 @@
     <meta property="og:title" content="Hotel DAL Kielce - 3-gwiazdkowy hotel w centrum Kielc">
     <meta property="og:description" content="Komfortowy pobyt w centrum Kielc. 52 pokoje, sale konferencyjne do 120 osób, parking z monitoringiem. Idealny dla biznesu i turystyki.">
     <meta property="og:image" content="https://www.hoteldal.pl/img/hotel-dal-kielce-og.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.hoteldal.pl/">
-    <meta property="twitter:title" content="Hotel DAL Kielce - 3-gwiazdkowy hotel w centrum Kielc">
-    <meta property="twitter:description" content="Komfortowy pobyt w centrum Kielc. 52 pokoje, sale konferencyjne, parking z monitoringiem.">
-    <meta property="twitter:image" content="https://www.hoteldal.pl/img/hotel-dal-kielce-og.jpg">
-    
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -63,54 +57,63 @@
     </script>
     
     <link rel="canonical" href="https://www.hoteldal.pl/">
-    <link rel="stylesheet" href="css/webfonts/fonts.css">
-    <link rel="stylesheet" href="css/webfonts/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <style>
-    /* Static hero image styling (replaced Swiper) */
-    .hero{
-        position: relative;
-        min-height: 520px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
+        @font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-display: swap;
+  src: url('css/webfonts/montserrat-v30-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;  
+  font-display: swap;
+  src: url('css/webfonts/montserrat-v30-latin-600.woff2') format('woff2');
+}
+    /* Expanded critical (above-the-fold) styles: stabilize header/nav + hero to avoid layout shift */
+    html,body{height:100%;margin:0;padding:0}
+    /* keep site font loading behavior consistent with webfont declarations */
+    .container{width:100%;max-width:1400px;margin:0 auto;padding:0 30px}
+    /* Header basics (keeps header height/position stable before full CSS loads) */
+    header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,0.95);box-shadow:0 2px 15px rgba(0,0,0,0.05);transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);backdrop-filter:blur(10px)}
+    .navbar{display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo img{width:180px;height:auto;object-fit:contain;margin-right:8px}
+    .nav-menu{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+    .nav-item{margin:0 12px;display:flex;align-items:center}
+    .nav-link{text-decoration:none;color:#2c2c2c;font-weight:600;font-size:1.05rem;transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1);position:relative;padding:8px 5px}
+    .hamburger{display:none}
 
-    /* full-bleed background div that fills the hero */
-    .hero-image{
-        position: absolute;
-        inset: 0; /* top:0; right:0; bottom:0; left:0 */
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: 0;
-        transform: translateZ(0);
-    }
-
-    /* subtle overlay to improve text contrast */
-    .hero::after{
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,0.22);
-        z-index: 1;
-        pointer-events: none;
-    }
-
-    /* ensure content sits above the background and overlay */
-    .hero-content{
-        position: relative;
-        z-index: 2;
-        color: #fff; /* safe default when overlay applied */
-    }
-
-    @media (max-width: 768px){
-        .hero{ min-height: 360px; }
-    }
+    /* Hero: keep sizes stable */
+    .hero{position:relative;height:100vh;min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:80px}
+    .hero-image{position:absolute;inset:0;width:100%;height:100%;z-index:0;transform:translateZ(0);overflow:hidden}
+    .hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    /* ensure hero image reserves layout when loading */
+    .hero-image img[width][height]{aspect-ratio: attr(width) / attr(height);}    
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.22);z-index:1;pointer-events:none}
+    .hero-content{position:relative;z-index:2;color:#fff;max-width:800px;padding:0 30px}
+    .hero h1{font-size:4rem;margin-bottom:25px;color:#fff;text-shadow:0 2px 15px rgba(0,0,0,0.2);line-height:1.1}
+    .hero p{font-size:1.4rem;margin-bottom:40px;text-shadow:0 2px 5px rgba(0,0,0,0.3);max-width:600px}
+    @media (max-width:768px){.hero{min-height:360px}.hero h1{font-size:2.2rem}.hero p{font-size:1.05rem}}
     </style>
+    <link rel="preload" href="css/webfonts/fonts.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/webfonts/fonts.css"></noscript>
+    <link rel="preload" href="css/webfonts/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/webfonts/all.min.css">
+    </noscript> 
+    
+    <!-- Preload critical assets to speed up first and repeat views -->
+    <link rel="preload" as="image" href="img/hero/bg01-2.webp">
+    <link rel="preload" href="css/webfonts/montserrat-v30-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="css/webfonts/montserrat-v30-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="css/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="css/webfonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="css/webfonts/PlayfairDisplay-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+    <!-- Load main stylesheet asynchronously to avoid render-blocking; noscript provides fallback -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
 </head>
 <body>
     <!-- Header -->
@@ -118,7 +121,7 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <img src="img/logo/logo.webp" alt="Hotel Dal Logo">
+                    <img src="img/logo/logo.webp" alt="Hotel Dal Logo" width="180" height="38">
                 </div>
                 
                 <ul class="nav-menu">
@@ -140,8 +143,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <!-- Replaced Swiper slider with a single static hero image -->
-        <div class="hero-image" style="background-image: url('img/hero/bg01-2.webp');" aria-hidden="true"></div>
+        <!-- Replaced Swiper slider with a single static hero image (moved bg image into HTML for better loading control) -->
+        <div class="hero-image" aria-hidden="true">
+            <img src="img/hero/bg01-2.webp" alt="Hotel Dal Panorama" width="1800" height="1200"
+                 fetchpriority="high" decoding="async" loading="eager"
+                 style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
 
         <div class="container">
             <div class="hero-content">
@@ -158,28 +165,28 @@
     <div class="feature-box">
         <i class="fas fa-map-marker-alt"></i>
         <div class="feature-text">
-            <h4>Idealna lokalizacja</h4>
+            <h2>Idealna lokalizacja</h2>
             <p>Centrum Kielc, blisko Targów Kielce</p>
         </div>
     </div>
     <div class="feature-box">
         <i class="fas fa-coffee"></i>
         <div class="feature-text">
-            <h4>Śniadania i catering</h4>
+            <h2>Śniadania i catering</h2>
             <p>Pyszne śniadania i obsługa wydarzeń</p>
         </div>
     </div>
     <div class="feature-box">
         <i class="fas fa-parking"></i>
         <div class="feature-text">
-            <h4>Parking z monitoringiem</h4>
+            <h2>Parking z monitoringiem</h2>
             <p>Garaż podziemny i parking zewnętrzny</p>
         </div>
     </div>
     <div class="feature-box">
         <i class="fas fa-business-time"></i>
         <div class="feature-text">
-            <h4>Sale konferencyjne</h4>
+            <h2>Sale konferencyjne</h2>
             <p>Przestrzeń dla grup do 120 osób</p>
         </div>
     </div>
@@ -225,7 +232,7 @@
                 <div class="room-card">
                     <div class="room-badge">Idealne dla biznesu</div>
                     <div class="room-image">
-                        <img src="img/rooms/pokoj_jednoosobowy.webp" alt="Pokój jednoosobowy">
+                        <img src="img/rooms/pokoj_jednoosobowy.webp" alt="Pokój jednoosobowy" width="423" height="300" loading="lazy">
                     </div>
                     <div class="room-content">
                         <h3>Pokój jednoosobowy</h3>
@@ -252,7 +259,7 @@
                 <div class="room-card">
                     <div class="room-badge">Najpopularniejszy</div>
                     <div class="room-image">
-                        <img src="img/rooms/pokoj_dwuosobowy.webp" alt="Pokój dwuosobowy twin">
+                        <img src="img/rooms/pokoj_dwuosobowy.webp" alt="Pokój dwuosobowy twin" width="423" height="300" loading="lazy">
                     </div>
                     <div class="room-content">
                         <h3>Pokój dwuosobowy typu twin</h3>
@@ -279,7 +286,7 @@
                 <div class="room-card">
                     <div class="room-badge">Double</div>
                     <div class="room-image">
-                        <img src="img/rooms/pokoj_2_os_double.webp" alt="Pokój dwuosobowy double">
+                        <img src="img/rooms/pokoj_2_os_double.webp" alt="Pokój dwuosobowy double" width="423" height="300" loading="lazy">
                     </div>
                     <div class="room-content">
                         <h3>Pokój dwuosobowy typu double</h3>
@@ -306,7 +313,7 @@
                 <div class="room-card">
                     <div class="room-badge">Dla rodzin</div>
                     <div class="room-image">
-                        <img src="img/rooms/pokoj_dwuosobowy_dostawka.webp" alt="Pokój z dostawką">
+                        <img src="img/rooms/pokoj_dwuosobowy_dostawka.webp" alt="Pokój z dostawką" width="423" height="300" loading="lazy">
                     </div>
                     <div class="room-content">
                         <h3>Pokój dwuosobowy z dostawką</h3>
@@ -333,7 +340,7 @@
                 <div class="room-card">
                     <div class="room-badge">Exclusive</div>
                     <div class="room-image">
-                        <img src="img/rooms/apartament.webp" alt="Apartament">
+                        <img src="img/rooms/apartament.webp" alt="Apartament" width="423" height="300" loading="lazy">
                     </div>
                     <div class="room-content">
                         <h3>Apartament</h3>
@@ -555,7 +562,7 @@
                     </div>
                     
                     <div class="map-container">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.721147149352!2d20.626756376886426!3d50.87336197167607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471827ecbc7f1413%3A0x2f1da25d823bb9ac!2sHotel%20Dal!5e0!3m2!1spl!2spl!4v1755590045068!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+<iframe title="Lokalizacja Hotelu Dal-Kielce" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2517.721147149352!2d20.626756376886426!3d50.87336197167607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471827ecbc7f1413%3A0x2f1da25d823bb9ac!2sHotel%20Dal!5e0!3m2!1spl!2spl!4v1755590045068!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
                 </div>
                 
                 <div class="contact-form">
@@ -732,7 +739,7 @@
             });
         })();
     </script>
-    <script src="gallery-modal.js"></script>
+    <script src="gallery-modal.js" defer></script>
     <!-- Floating language switcher -->
     <div id="langMenu" class="lang-menu" role="menu" aria-hidden="true">
         <a class="lang-item" role="menuitem" href="/pl/" aria-label="polski"><span class="lang-badge">PL</span><span>polski</span></a>

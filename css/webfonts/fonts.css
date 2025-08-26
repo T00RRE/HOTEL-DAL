@@ -38,6 +38,7 @@
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 400;
+  /* optional reduces layout shift by allowing fallback text if font is slow */
   font-display: swap;
   src: url('PlayfairDisplay-Regular.ttf') format('truetype');
 }
