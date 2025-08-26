@@ -1,0 +1,16 @@
+<!-- cookie-notification.html -->
+<div id="cookie-notification" aria-live="polite">
+  <span>Ta strona korzysta z plików cookies w celu poprawy jakości usług. Pozostając na stronie, wyrażasz zgodę na ich użycie.</span>
+  <button id="cookie-close" class="cookie-close">OK</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('cookieAccepted')) {
+      document.getElementById('cookie-notification').style.display = 'none';
+    }
+    document.getElementById('cookie-close').onclick = function() {
+      document.getElementById('cookie-notification').style.display = 'none';
+      localStorage.setItem('cookieAccepted', 'true');
+    };
+  });
+</script>
